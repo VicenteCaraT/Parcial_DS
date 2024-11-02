@@ -1,6 +1,4 @@
 import multiprocessing
-from sqlalchemy.ext.asyncio import AsyncSession
-from mutant_app.models.dna_model import DNARecord
 
 def has_sequence(sequence):
     count = 1

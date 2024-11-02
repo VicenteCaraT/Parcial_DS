@@ -2,3 +2,4 @@ fastapi
 SQLAlchemy
 python-dotenv
 uvicorn
+pymysql

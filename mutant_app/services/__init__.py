@@ -1,0 +1,1 @@
+from .mutant_service import is_mutant
