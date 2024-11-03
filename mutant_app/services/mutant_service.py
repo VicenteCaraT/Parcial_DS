@@ -11,22 +11,19 @@ def has_sequence(sequence):
             count = 1
     return False
 
-# Verifica si hay secuencias horizontales en una fila
 def check_horizontal(row):
     return has_sequence(row)
 
-# Verifica si hay secuencias verticales en una columna
 def check_vertical(args):
     dna, col = args
     column = ''.join(dna[row][col] for row in range(len(dna)))
     return has_sequence(column)
 
-# Verifica si hay secuencias diagonales
 def check_diagonal(args):
     dna, direction = args
     n = len(dna)
     
-    if direction == 0:  # Diagonales de izquierda a derecha
+    if direction == 0: 
         for start in range(n):
             diag_lr = ''.join(dna[i][start + i] for i in range(n) if start + i < n)
             if len(diag_lr) >= 4 and has_sequence(diag_lr):
@@ -37,7 +34,7 @@ def check_diagonal(args):
             if len(diag_lr) >= 4 and has_sequence(diag_lr):
                 return True
 
-    elif direction == 1:  # Diagonales de derecha a izquierda
+    elif direction == 1: 
         for start in range(n):
             diag_rl = ''.join(dna[i][n - 1 - start - i] for i in range(n) if n - 1 - start - i >= 0)
             if len(diag_rl) >= 4 and has_sequence(diag_rl):
@@ -50,12 +47,10 @@ def check_diagonal(args):
 
     return False
 
-# Función principal para determinar si el ADN corresponde a un mutante
 def is_mutant(dna):
     allowed_chars = {'A', 'T', 'C', 'G'}
     n = len(dna)
-    
-    # Valida la estructura de la secuencia de ADN
+
     for row in dna:
         if len(row) != n or any(char not in allowed_chars for char in row):
             return False

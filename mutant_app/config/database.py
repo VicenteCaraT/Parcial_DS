@@ -3,10 +3,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import OperationalError
-from mutant_app.models.dna_model import Base  # Importar modelo con Base
+from models.dna_model import Base
 
-# Cargar configuración desde el archivo .env
-env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../.env'))
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../.env'))
 load_dotenv(env_path)
 
 MYSQL_HOST = os.getenv('MYSQL_HOST')
@@ -23,14 +22,11 @@ class Database:
     print(f"Connecting to database at: {DATABASE_URI}")
     
     def __init__(self):
-        # Intentar crear la base de datos si no existe
         self._create_database_if_not_exists()
         
-        # Crear el motor de conexión y configurar la sesión
         self.engine = create_engine(DATABASE_URI)
         self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=self.engine)
 
-        # Verificar conexión y crear tablas si no existen
         if self.check_connection():
             self.create_tables()
 
@@ -46,14 +42,14 @@ class Database:
 
     def drop_database(self):
         try:
-            Base.metadata.drop_all(self.engine)  # Usa Base para eliminar las tablas
+            Base.metadata.drop_all(self.engine)
             print("Tables dropped.")
         except Exception as e:
             print(f"Error dropping tables: {e}")
 
     def create_tables(self):
         try:
-            Base.metadata.create_all(self.engine)  # Usa Base para crear las tablas
+            Base.metadata.create_all(self.engine)
             print("Tables created.")
         except Exception as e:
             print(f"Error creating tables: {e}")
@@ -74,7 +70,6 @@ class Database:
             return False
 
     def _create_database_if_not_exists(self):
-        # Crear una URI temporal sin especificar la base de datos
         temp_database_uri = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/'
         temp_engine = create_engine(temp_database_uri)
         

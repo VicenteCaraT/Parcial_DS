@@ -7,7 +7,7 @@ class DNARecord(Base):
     __tablename__ = "dna_records"
     
     id = Column(Integer, primary_key=True, index=True)
-    dna_sequence = Column(String(255), unique=True, nullable=False)  # Especifica la longitud aquí
+    dna_sequence = Column(String(255), unique=True, nullable=False) 
     is_mutant = Column(Boolean, nullable=False)
     
     def __repr__(self):

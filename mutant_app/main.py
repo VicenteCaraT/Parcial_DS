@@ -3,8 +3,8 @@ from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 
 # Importa tu router de controladores
-from mutant_app.controllers.mutant_controller import router as mutant_router
-from mutant_app.config.database import Database
+from controllers.mutant_controller import router as mutant_router
+from config.database import Database
 
 app = FastAPI()
 
