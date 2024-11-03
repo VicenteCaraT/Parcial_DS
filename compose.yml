@@ -1,0 +1,30 @@
+
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: vichi123
+      MYSQL_DATABASE: mutante
+    ports:
+      - "3306:3306"
+    networks:
+      - mutant-network
+
+  api:
+    build: .
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DB: mutante
+      MYSQL_USER: root
+      MYSQL_PASSWORD: vichi123
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - mutant-network
+
+networks:
+  mutant-network:
+    driver: bridge

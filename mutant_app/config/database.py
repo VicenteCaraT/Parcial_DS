@@ -53,6 +53,7 @@ class Database:
             print("Tables created.")
         except Exception as e:
             print(f"Error creating tables: {e}")
+            raise
 
     def close_session(self):
         if hasattr(self, "_session"):

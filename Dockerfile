@@ -2,10 +2,10 @@
 FROM python:3.9-slim
 
 # Establece el directorio de trabajo en el contenedor
-WORKDIR /mutante_parcialds
+WORKDIR /mutant_app
 
 # Copia los archivos de la aplicación al contenedor
-COPY . /mutant_app
+COPY /mutant_app /mutant_app/
 
 # Instala las dependencias desde requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
