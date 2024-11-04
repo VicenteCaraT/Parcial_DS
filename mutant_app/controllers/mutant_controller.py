@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from services.mutant_service import is_mutant
+from services.mutant_service import MutantService 
 from repositories.dna_repository import DNARepository
 
 class DnaRequest(BaseModel):
@@ -24,7 +24,7 @@ class MutantController:
             raise HTTPException(status_code=400, detail="DNA sequence is required")
 
         # Verificar si la secuencia de ADN corresponde a un mutante
-        if is_mutant(dna_sequence):
+        if MutantService.is_mutant(dna_sequence):  # Usar el método de la clase
             self.repository.save_dna_record(dna_sequence, is_mutant=True)
             return {"status": "Mutant detected"}
         else:
