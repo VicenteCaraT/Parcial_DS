@@ -24,6 +24,7 @@ class Database:
     
     def __init__(self):
         self._create_database_if_not_exists()
+        print("Connecting TO: ", DATABASE_URI)
         
         self.engine = create_engine(DATABASE_URI)
         self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=self.engine)
