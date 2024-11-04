@@ -15,8 +15,8 @@ MYSQL_USER = os.getenv('MYSQL_USER')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
 
 # URI de conexión a la base de datos
-DATABASE_URI = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}'
-#DATABASE_URI = 'mysql+pymysql://root:vichi123@db:3306/mutante'
+# DATABASE_URI = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}'
+DATABASE_URI = 'mysql+pymysql://root:vichi123@db:3306/mutante'
 
 
 class Database: 
@@ -26,7 +26,7 @@ class Database:
         self._create_database_if_not_exists()
         print("Connecting TO: ", DATABASE_URI)
         
-        self.engine = create_engine(DATABASE_URI,  pool_size=10, max_overflow=5)
+        self.engine = create_engine(DATABASE_URI)
         self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=self.engine)
 
         if self.check_connection():
