@@ -15,11 +15,12 @@ MYSQL_USER = os.getenv('MYSQL_USER')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
 
 # URI de conexión a la base de datos
-DATABASE_URI = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}'
+# DATABASE_URI = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}'
+DATABASE_URI = 'mysql+pymysql://root:vichi123@db:3306/mutante'
+
 
 class Database: 
     _instance = None
-    print(f"Connecting to database at: {DATABASE_URI}")
     
     def __init__(self):
         self._create_database_if_not_exists()
