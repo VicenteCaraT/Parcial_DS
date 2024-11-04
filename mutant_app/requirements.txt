@@ -4,3 +4,4 @@ python-dotenv
 uvicorn
 pymysql
 cryptography
+psycopg2-binary

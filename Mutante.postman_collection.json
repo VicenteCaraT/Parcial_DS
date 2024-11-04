@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "961592cd-5cac-41a4-a4a2-86386f8f9a01",
+		"name": "Mutante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33777156",
+		"_collection_link": "https://gold-comet-113394.postman.co/workspace/My-Workspace~8ce96e3e-33f4-4013-89aa-7630f7785c91/collection/33777156-961592cd-5cac-41a4-a4a2-86386f8f9a01?action=share&source=collection_link&creator=33777156"
+	},
+	"item": [
+		{
+			"name": "DNA post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"dna\": [\"ATGCGA\", \n            \"CAGTGC\", \n            \"TTATGG\", \n            \"AGTGGG\", \n            \"CACTTA\", \n            \"TCGCTG\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/mutant/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"mutant",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DNA stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/mutant/stats",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"mutant",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

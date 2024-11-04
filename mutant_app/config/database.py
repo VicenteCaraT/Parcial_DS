@@ -10,19 +10,19 @@ from models.dna_model import Base
 env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../.env'))
 load_dotenv(env_path)
 
-# Configuración de conexión a MySQL
-MYSQL_HOST = os.getenv('MYSQL_HOST')
-MYSQL_PORT = os.getenv('MYSQL_PORT')
-MYSQL_DB = os.getenv('MYSQL_DB')
-MYSQL_USER = os.getenv('MYSQL_USER')
-MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+# Configuración de conexión a PostgreSQL
+POSTGRES_HOST = os.getenv('POSTGRES_HOST')
+POSTGRES_PORT = os.getenv('POSTGRES_PORT')
+POSTGRES_DB = os.getenv('POSTGRES_DB')
+POSTGRES_USER = os.getenv('POSTGRES_USER')
+POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
 
-# URI de conexión a la base de datos
-DATABASE_URI = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}'
+# URI de conexión a la base de datos PostgreSQL
+DATABASE_URI = f'postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}'
 
 
-def check_mysql_service():
-    """Verifica si el servicio MySQL está activo."""
+def check_postgres_service():
+    """Verifica si el servicio PostgreSQL está activo."""
     temp_engine = create_engine(DATABASE_URI)
     try:
         with temp_engine.connect() as connection:
