@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \n    \"dna\": [\"ATGCGA\", \n            \"CAGTGC\", \n            \"TTATGG\", \n            \"AGTGGG\", \n            \"CACTTA\", \n            \"TCGCTG\"]\n}",
+					"raw": "{ \n    \"dna\": [\"CAAAGA\", \n            \"CGACGC\", \n            \"TTAACG\", \n            \"ATACAG\", \n            \"CAATTA\", \n            \"TAATAG\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -22,18 +22,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/mutant/",
-					"protocol": "http",
+					"raw": "https://parcial-ds.onrender.com/mutant",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"parcial-ds",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
-						"mutant",
-						""
+						"mutant"
 					]
 				}
 			},
@@ -45,15 +42,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/mutant/stats",
-					"protocol": "http",
+					"raw": "https://parcial-ds.onrender.com/mutant/stats",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"parcial-ds",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"mutant",
 						"stats"

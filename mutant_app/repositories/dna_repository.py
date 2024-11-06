@@ -13,14 +13,8 @@ class DNARepository:
             session.add(new_record)
             session.commit()
                 
-    def get_stats(self):
+    def get_dna_count(self):
         with self.db.get_session() as session:
-            count_mutant_dna = session.query(DNARecord).filter_by(is_mutant=True).count()
-            count_human_dna = session.query(DNARecord).filter_by(is_mutant=False).count()
-            total_count = count_mutant_dna + count_human_dna
-            ratio = count_mutant_dna / total_count if total_count > 0 else 0
-            return {
-                "count_mutant_dna": count_mutant_dna,
-                "count_human_dna": count_human_dna,
-                "ratio": ratio
-            }
+            mutant_count = session.query(DNARecord).filter_by(is_mutant=True).count()
+            human_count = session.query(DNARecord).filter_by(is_mutant=False).count()
+            return mutant_count, human_count

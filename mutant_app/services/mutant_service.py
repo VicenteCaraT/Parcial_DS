@@ -1,6 +1,9 @@
 import multiprocessing
+from repositories.dna_repository import DNARepository
 
 class MutantService:
+    def __init__(self, dna_repository: DNARepository):
+        self.dna_repository = dna_repository
     
     @staticmethod
     def has_sequence(sequence):
@@ -81,3 +84,15 @@ class MutantService:
             sequence_count += sum(diagonal_results)
         
         return sequence_count > 1
+    
+    def get_stats(self):
+        count_mutant_dna, count_human_dna = self.dna_repository.get_dna_count()
+        
+        total_count = count_mutant_dna + count_human_dna
+        ratio = round(count_mutant_dna / total_count, 2) if total_count > 0 else 0.0
+        
+        return {
+            "count_mutant_dna": count_mutant_dna,
+            "count_human_dna": count_human_dna,
+            "ratio": ratio
+        }
